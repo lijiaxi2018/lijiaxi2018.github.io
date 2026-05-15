@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Projects | Jiaxi Li</title>
+
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Academic Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+  />
+</head>
+
+<body data-page="projects">
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="site-title" href="../#home">Jiaxi Li</a>
+
+      <div class="nav-links">
+        <a class="nav-link" href="../#home" data-section="home">Home</a>
+        <a class="nav-link" href="../#news" data-section="news">News</a>
+        <a class="nav-link" href="../#publications" data-section="publications">Publications</a>
+        <a class="nav-link active" href="./" data-section="projects">Projects</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="projects-page">
+    <section class="project-list">
+
+      <!-- Project 1 -->
+      <article id="project-multi-agent-llm" class="project-block">
+        <h1>
+          SLO-Aware Multi-Agent LLM Serving
+          <span class="project-status">(Work in Progress)</span>
+        </h1>
+
+        <div class="project-layout">
+          <div class="project-text">
+            <p>
+              This ongoing project explores how to efficiently serve multi-agent
+              large language model applications under latency, throughput, and
+              energy constraints. Multi-agent LLM systems often consist of
+              multiple specialized agents, such as planners, actors, retrievers,
+              and synthesizers. These agents interact through a task graph, making
+              the serving process more complex than single-model inference.
+            </p>
+
+            <p>
+              We investigate SLO-aware routing, dynamic model selection, and
+              hardware-aware scheduling for multi-agent LLM workloads. The goal is
+              to improve end-to-end response latency and serving efficiency while
+              satisfying request-level service objectives.
+            </p>
+
+            <p class="project-note">
+              Extended version in preparation for conference submission.
+            </p>
+
+            <p class="project-links">
+              [<a href="#">Paper</a>]
+              [<a href="#">Project Page</a>]
+              [<a href="#">GitHub</a>]
+            </p>
+          </div>
+
+          <div class="project-figures">
+            <div class="figure-placeholder wide">
+              <span>System Overview Figure</span>
+            </div>
+
+            <div class="figure-row">
+              <div class="figure-placeholder small">
+                <span>Routing</span>
+              </div>
+
+              <div class="figure-placeholder small">
+                <span>Latency</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article id="project-pd-disaggregation" class="project-block">
+        <h1>
+          Benchmarking Prefill-Decode Disaggregation for LLM Inference
+        </h1>
+
+        <div class="project-layout">
+          <div class="project-text">
+            <p>
+              Large language model inference consists of two major stages:
+              prefill and decode. Prefill processes input prompts and builds the
+              KV cache, while decode generates output tokens autoregressively.
+              These two stages exhibit different compute, memory, and energy
+              characteristics.
+            </p>
+
+            <p>
+              This project benchmarks prefill-decode disaggregation across
+              different model sizes, workload settings, KV cache transfer paths,
+              and GPU frequency configurations. We study when disaggregation
+              improves performance and energy efficiency, and when its overheads
+              outweigh the benefits.
+            </p>
+
+            <p>
+              The project also explores SLO-aware serving-efficiency metrics that
+              combine token throughput, energy consumption, and latency
+              constraints. The goal is to provide practical guidance for
+              deploying disaggregated LLM inference systems.
+            </p>
+
+            <p class="project-note">
+              Workshop paper accepted.
+            </p>
+
+            <p class="project-links">
+              [<a href="#">arXiv</a>]
+              [<a href="#">Project Page</a>]
+              [<a href="#">GitHub</a>]
+            </p>
+          </div>
+
+          <div class="project-figures">
+            <div class="figure-grid">
+              <div class="figure-placeholder">
+                <span>Prefill</span>
+              </div>
+
+              <div class="figure-placeholder">
+                <span>Decode</span>
+              </div>
+
+              <div class="figure-placeholder">
+                <span>KV Transfer</span>
+              </div>
+
+              <div class="figure-placeholder">
+                <span>Energy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article id="project-video-analytics" class="project-block">
+        <h1>
+          Efficient Video Analytics Systems for Edge and IoT Applications
+        </h1>
+
+        <div class="project-layout">
+          <div class="project-text">
+            <p>
+              Video analytics systems are increasingly deployed on edge devices,
+              embedded platforms, and IoT environments. These systems must
+              satisfy strict latency and resource constraints while processing
+              high-volume visual data streams.
+            </p>
+
+            <p>
+              This project studies efficient video analytics pipelines for
+              real-world deployment scenarios. We investigate model selection,
+              adaptive scheduling, and resource-aware optimization to improve
+              system performance under dynamic workloads.
+            </p>
+
+            <p>
+              The broader goal is to design practical AI systems that bridge
+              machine learning accuracy with deployment constraints such as
+              compute capacity, bandwidth, energy consumption, and real-time
+              responsiveness.
+            </p>
+
+            <p class="project-links">
+              [<a href="#">PDF</a>]
+              [<a href="#">Technical Report</a>]
+              [<a href="#">Dataset</a>]
+            </p>
+          </div>
+
+          <div class="project-figures">
+            <div class="figure-placeholder tall">
+              <span>Video Analytics Pipeline</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <script src="../script.js"></script>
+</body>
+</html>

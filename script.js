@@ -1,3 +1,4 @@
+const currentPage = document.body.dataset.page;
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-link");
 
@@ -14,7 +15,11 @@ function setActiveLink(sectionId) {
 }
 
 function updateActiveLinkOnScroll() {
-  const headerOffset = 100;
+  if (currentPage !== "home") {
+    return;
+  }
+
+  const headerOffset = 110;
   const scrollPosition = window.scrollY + headerOffset;
 
   let currentSectionId = "home";
@@ -34,12 +39,21 @@ function updateActiveLinkOnScroll() {
   setActiveLink(currentSectionId);
 }
 
-window.addEventListener("scroll", updateActiveLinkOnScroll);
-window.addEventListener("load", updateActiveLinkOnScroll);
+if (currentPage === "home") {
+  window.addEventListener("scroll", updateActiveLinkOnScroll);
+  window.addEventListener("load", updateActiveLinkOnScroll);
 
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    const sectionId = link.getAttribute("data-section");
-    setActiveLink(sectionId);
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const sectionId = link.getAttribute("data-section");
+
+      if (sectionId !== "projects") {
+        setActiveLink(sectionId);
+      }
+    });
   });
-});
+}
+
+if (currentPage === "projects") {
+  setActiveLink("projects");
+}
