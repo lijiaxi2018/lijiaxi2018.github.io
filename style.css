@@ -86,14 +86,14 @@ body {
 .section {
   max-width: 1250px;
   margin: 0 auto;
-  padding: 90px 32px;
+  padding: 45px 32px 32px 32px;
   scroll-margin-top: 90px;
 }
 
 .home-section {
-  min-height: calc(100vh - 70px);
+  min-height: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .home-grid {
@@ -141,35 +141,91 @@ body {
   font-size: 17px;
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
+.profile-card {
+  text-align: left;
+  padding-top: 20px;
 }
 
-.social-icons a {
+.profile-photo {
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 0 24px 0;
+}
+
+.profile-card h1 {
+  margin: 0 0 12px 0;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.profile-role {
+  margin: 0 0 6px 0;
+  color: var(--text-color);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.affiliation {
+  margin: 0 0 8px 0;
   color: var(--link-color);
-  font-size: 34px;
-  text-decoration: none;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  font-size: 20px;
+  line-height: 1.35;
+  max-width: 290px;
 }
 
-.social-icons a:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
+.email {
+  margin: 0 0 28px 0;
+  color: var(--muted-color);
+  font-size: 17px;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.profile-links a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1.35;
+}
+
+.profile-links a i {
+  width: 28px;
+  color: var(--link-color);
+  font-size: 26px;
+  text-align: center;
+}
+
+.profile-links a:hover span {
+  color: var(--link-color);
+  text-decoration: underline;
 }
 
 /* Bio */
 
 .bio-content h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 0px 0;
   font-size: 46px;
-  font-weight: 300;
+  font-weight: 350;
   letter-spacing: 0.08em;
 }
 
 .bio-content p {
   margin: 0 0 22px 0;
+  font-size: 18px;
 }
 
 a {
@@ -214,18 +270,22 @@ a:hover {
 /* News */
 
 .news-item {
-  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  column-gap: 28px;
+  align-items: start;
+  margin-bottom: 18px;
 }
 
 .news-date {
-  display: inline-block;
-  min-width: 110px;
+  display: block;
   font-weight: 700;
   color: #444444;
+  white-space: nowrap;
 }
 
 .news-item p {
-  display: inline;
+  display: block;
   margin: 0;
 }
 
