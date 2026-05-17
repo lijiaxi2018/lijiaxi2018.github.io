@@ -107,41 +107,6 @@ body {
 /* Profile card */
 
 .profile-card {
-  text-align: center;
-  padding-top: 20px;
-}
-
-.profile-photo {
-  width: 210px;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 24px auto;
-}
-
-.profile-card h1 {
-  margin: 0 0 10px 0;
-  font-size: 36px;
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-.affiliation {
-  margin: 0 auto 8px auto;
-  color: var(--link-color);
-  font-size: 20px;
-  line-height: 1.35;
-  max-width: 290px;
-}
-
-.email {
-  margin: 0 0 28px 0;
-  color: var(--muted-color);
-  font-size: 17px;
-}
-
-.profile-card {
   text-align: left;
   padding-top: 20px;
 }
@@ -374,9 +339,28 @@ a:hover {
 
 .project-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(400px, 1fr);
-  gap: 20px;
+  gap: 15px;
   align-items: start;
+}
+
+/* Default: balanced text and figures */
+.project-layout.layout-balanced {
+  grid-template-columns: minmax(0, 1.2fr) minmax(400px, 1fr);
+}
+
+/* More space for text, figures slightly smaller */
+.project-layout.layout-text-wide {
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.85fr);
+}
+
+/* More space for figures, text slightly narrower */
+.project-layout.layout-figures-wide {
+  grid-template-columns: minmax(0, 1fr) minmax(460px, 1.15fr);
+}
+
+/* Very figure-heavy project */
+.project-layout.layout-figures-large {
+  grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.25fr);
 }
 
 .project-text p {
@@ -407,9 +391,106 @@ a:hover {
   justify-self: end;
 }
 
+/* Top-level figure groups */
+
+.project-figures > .figure-card,
+.project-figures > .figure-row-card {
+  padding: 11px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.project-figures > .figure-card:first-child,
+.project-figures > .figure-row-card:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Single figure card */
+
+.figure-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Figure row card: one separated block containing two figures */
+
+.figure-row-card {
+  width: 100%;
+}
+
+/* Two figures on the same row */
+
+.figure-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 8px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+.figure-row .figure-card {
+  width: 100%;
+  padding: 0;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Images */
+
+.project-image {
+  width: 100%;
+  display: block;
+  border: none;
+  margin: 0;
+}
+
+/* Captions */
+
+.figure-caption {
+  width: 100%;
+  margin: 8px 0 0 0;
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.figure-caption strong {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.figure-caption.caption-left {
+  text-align: left;
+}
+
+.figure-caption.caption-left strong {
+  display: inline;
+  width: auto;
+  text-align: left;
+}
+
+/* This helps captions align better under two side-by-side figures */
+
+.figure-row .figure-caption {
+  width: 100%;
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Placeholder figures */
+
 .figure-placeholder {
+  width: 100%;
   min-height: 170px;
-  border: 1px solid var(--placeholder-border);
+  border: none;
   background:
     linear-gradient(45deg, transparent 49%, rgba(0, 91, 187, 0.08) 50%, transparent 51%),
     linear-gradient(-45deg, transparent 49%, rgba(0, 91, 187, 0.08) 50%, transparent 51%),
@@ -437,44 +518,23 @@ a:hover {
   min-height: 430px;
 }
 
-.figure-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0px;
-}
-
-.figure-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.figure-card {
-  width: 100%;
-}
-
-.figure-caption {
-  margin: 4px 0 14px 0;
-  color: #555555;
-  font-size: 15.5px;
-  line-height: 1.45;
-  text-align: center;
-}
-
-/* Use real figures later with this class */
-
-.project-image {
-  width: 100%;
-  display: block;
-  /* border: 1px solid var(--border-color); */
-}
+/* Older image-caption class, kept for compatibility */
 
 .project-image-caption {
+  width: 100%;
   margin-top: 6px;
   text-align: center;
   font-size: 14px;
   color: #555555;
   line-height: 1.4;
+}
+
+/* Optional grid for four figures */
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
 /* Responsive */
@@ -543,6 +603,11 @@ a:hover {
 
   .project-text p {
     text-align: left;
+  }
+
+  .project-figures {
+    max-width: 100%;
+    justify-self: stretch;
   }
 }
 

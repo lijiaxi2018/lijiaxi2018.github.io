@@ -44,7 +44,7 @@
           Energy-Efficient LLM Inference Clusters via Prefill-Decode Disaggregation
         </h1>
 
-        <div class="project-layout">
+       <div class="project-layout layout-balanced">
           <div class="project-text">
             <p>
               Disaggregated Large Language Model (LLM) serving dedicates distinct GPUs to 
@@ -85,7 +85,7 @@
             <div class="figure-card">
               <img
                 src="../assets/publications/euromlsys/system-diagram-col.jpg"
-                alt="system-diagram-col"
+                alt="Colocated serving configuration"
                 class="project-image"
               />
               <p class="figure-caption">
@@ -96,7 +96,7 @@
             <div class="figure-card">
               <img
                 src="../assets/publications/euromlsys/system-diagram-dis.jpg"
-                alt="system-diagram-dis"
+                alt="Disaggregated serving configurations"
                 class="project-image"
               />
               <p class="figure-caption">
@@ -104,27 +104,29 @@
               </p>
             </div>
 
-            <div class="figure-row">
-              <div class="figure-card">
-                <img
-                  src="../assets/publications/euromlsys/3b-ttft.png"
-                  alt="3b-ttft"
-                  class="project-image"
-                />
-                <p class="figure-caption">
-                  <strong>Time to First Token (Llama-3B)</strong>
-                </p>
-              </div>
+            <div class="figure-row-card">
+              <div class="figure-row">
+                <div class="figure-card">
+                  <img
+                    src="../assets/publications/euromlsys/3b-ttft.png"
+                    alt="Time to first token for Llama-3B"
+                    class="project-image"
+                  />
+                  <p class="figure-caption">
+                    <strong>Time to First Token (Llama-3B)</strong>
+                  </p>
+                </div>
 
-              <div class="figure-card">
-                <img
-                  src="../assets/publications/euromlsys/3b-tpot.png"
-                  alt="3b-tpot"
-                  class="project-image"
-                />
-                <p class="figure-caption">
-                  <strong>Time per Output Token (Llama-3B)</strong>
-                </p>
+                <div class="figure-card">
+                  <img
+                    src="../assets/publications/euromlsys/3b-tpot.png"
+                    alt="Time per output token for Llama-3B"
+                    class="project-image"
+                  />
+                  <p class="figure-caption">
+                    <strong>Time per Output Token (Llama-3B)</strong>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -137,10 +139,10 @@
           Low-Latency 360-Degree Video Analytics with Spatial-Temporal Filtering
         </h1>
 
-        <div class="project-layout">
+        <div class="project-layout layout-figures-wide">
           <div class="project-text">
             <p>
-              360-degree cameras provide omnidirectional coverage which improves situational 
+              360-degree cameras provide omnidirectional coverage, which improves situational 
               awareness in video analytics applications such as traffic monitoring, workspace 
               surveillance, and first-responder support. However, building efficient 360-degree 
               video analytics systems is challenging. Compared with traditional 2D videos, 
@@ -174,8 +176,64 @@
           </div>
 
           <div class="project-figures">
-            <div class="figure-placeholder tall">
-              <span>Video Analytics Pipeline</span>
+            <div class="figure-card">
+              <img
+                src="../assets/publications/acmtomm/system-figure.jpg"
+                alt="ST-360 system overview"
+                class="project-image"
+              />
+              <p class="figure-caption">
+                <strong>360-Degree Video Analytics Systems</strong>
+              </p>
+            </div>
+
+            <!-- <div class="figure-card">
+              <img
+                src="../assets/publications/acmtomm/dp.jpg"
+                alt="Dual-projection process"
+                class="project-image"
+              />
+              <p class="figure-caption">
+                <strong>The Dual-Projection Process</strong>
+              </p>
+            </div> -->
+
+            <div class="figure-card">
+              <img
+                src="../assets/publications/acmtomm/tf.jpg"
+                alt="Temporal filtering"
+                class="project-image"
+              />
+              <p class="figure-caption caption-left">
+                <strong>Temporal Filtering (TF): </strong>
+                Between neighboring frames, only the changed purple tiles require transmission 
+                and object detection, while unchanged orange tiles can reuse previous results.
+              </p>
+            </div>
+
+            <div class="figure-card">
+              <img
+                src="../assets/publications/acmtomm/sf.jpg"
+                alt="Spatial filtering"
+                class="project-image"
+              />
+              <p class="figure-caption caption-left">
+                <strong>Spatial Filtering (SF): </strong>
+                Spatial filtering identifies object-containing regions in the 360-degree ERP frame. 
+                Orange highlights the object areas, while green marks the feature regions selected 
+                for filtering.
+              </p>
+            </div>
+
+            <div class="figure-card">
+              <img
+                src="../assets/publications/acmtomm/latency.jpg"
+                alt="End-to-end latency results"
+                class="project-image"
+              />
+              <p class="figure-caption">
+                <strong>End-to-End Latency Reduction from Temporal and Spatial Filtering</strong>
+              </p>
             </div>
           </div>
         </div>
