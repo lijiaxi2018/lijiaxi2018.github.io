@@ -39,53 +39,92 @@
     <section class="project-list">
 
       <!-- Project 1 -->
-      <article id="project-multi-agent-llm" class="project-block">
+      <article id="project-pd-disaggregation" class="project-block">
         <h1>
-          SLO-Aware Multi-Agent LLM Serving
-          <span class="project-status">(Work in Progress)</span>
+          Energy-Efficient LLM Inference Clusters via Prefill-Decode Disaggregation
         </h1>
 
         <div class="project-layout">
           <div class="project-text">
             <p>
-              This ongoing project explores how to efficiently serve multi-agent
-              large language model applications under latency, throughput, and
-              energy constraints. Multi-agent LLM systems often consist of
-              multiple specialized agents, such as planners, actors, retrievers,
-              and synthesizers. These agents interact through a task graph, making
-              the serving process more complex than single-model inference.
+              Disaggregated Large Language Model (LLM) serving dedicates distinct GPUs to 
+              prefill and decode workload, but this separation introduces a KV cache transfer 
+              from the prefill GPU to the decode GPU after prefill completion. While existing 
+              works have explored KV cache transfer across memory and storage tiers, their 
+              performance and energy trade-offs remain insufficiently benchmarked. Similarly, 
+              the performance and energy implications of optimization techniques such as frequency 
+              scaling in disaggregated serving remain under-characterized.
             </p>
 
             <p>
-              We investigate SLO-aware routing, dynamic model selection, and
-              hardware-aware scheduling for multi-agent LLM workloads. The goal is
-              to improve end-to-end response latency and serving efficiency while
-              satisfying request-level service objectives.
+              To address this gap, we benchmark multiple KV cache transfer paths against a colocated 
+              serving baseline, measuring latency, throughput, and energy consumption under synthetic 
+              inference workloads. We further use dynamic voltage and frequency scaling (DVFS) to 
+              characterize the trade-off between serving efficiency and GPU frequency, and to evaluate 
+              the benefits of independently scaling the prefill and decode GPUs.
             </p>
 
-            <p class="project-note">
-              Extended version in preparation for conference submission.
+            <p>
+              Our results show that prefill–decode disaggregation is not always beneficial. Its gains 
+              depend on workload characteristic, KV transfer medium, and LLM model size. We also observe 
+              diminishing returns from higher KV transfer bandwidth and show that stage-wise independent 
+              frequency scaling can improve energy efficiency under latency constraints. Based on these 
+              insights, we propose a prototype framework for SLO-aware energy-efficient LLM serving and 
+              discuss its design challenges and evaluation methodology.
             </p>
 
             <p class="project-links">
-              [<a href="#">Paper</a>]
-              [<a href="#">Project Page</a>]
-              [<a href="#">GitHub</a>]
+              [<a href="../assets/publications/euromlsys/paper.pdf" target="_blank">Paper</a>]
+              [<a href="https://www.youtube.com/watch?v=F_vjP6X_aPM/" target="_blank" rel="noopener noreferrer">Video</a>]
+              [<a href="../assets/publications/euromlsys/slide.pdf" target="_blank">Slide</a>]
+              [<a href="../assets/publications/euromlsys/poster.pdf" target="_blank">Poster</a>]
             </p>
           </div>
 
           <div class="project-figures">
-            <div class="figure-placeholder wide">
-              <span>System Overview Figure</span>
+            <div class="figure-card">
+              <img
+                src="../assets/publications/euromlsys/system-diagram-col.jpg"
+                alt="system-diagram-col"
+                class="project-image"
+              />
+              <p class="figure-caption">
+                <strong>Colocated Configuration</strong>
+              </p>
+            </div>
+
+            <div class="figure-card">
+              <img
+                src="../assets/publications/euromlsys/system-diagram-dis.jpg"
+                alt="system-diagram-dis"
+                class="project-image"
+              />
+              <p class="figure-caption">
+                <strong>Disaggregated Configurations</strong>
+              </p>
             </div>
 
             <div class="figure-row">
-              <div class="figure-placeholder small">
-                <span>Routing</span>
+              <div class="figure-card">
+                <img
+                  src="../assets/publications/euromlsys/3b-ttft.png"
+                  alt="3b-ttft"
+                  class="project-image"
+                />
+                <p class="figure-caption">
+                  <strong>Time to First Token (Llama-3B)</strong>
+                </p>
               </div>
 
-              <div class="figure-placeholder small">
-                <span>Latency</span>
+              <div class="figure-card">
+                <img
+                  src="../assets/publications/euromlsys/3b-tpot.png"
+                  alt="3b-tpot"
+                  class="project-image"
+                />
+                <p class="figure-caption">
+                  <strong>Time per Output Token (Llama-3B)</strong>
+                </p>
               </div>
             </div>
           </div>
@@ -93,102 +132,44 @@
       </article>
 
       <!-- Project 2 -->
-      <article id="project-pd-disaggregation" class="project-block">
-        <h1>
-          Benchmarking Prefill-Decode Disaggregation for LLM Inference
-        </h1>
-
-        <div class="project-layout">
-          <div class="project-text">
-            <p>
-              Large language model inference consists of two major stages:
-              prefill and decode. Prefill processes input prompts and builds the
-              KV cache, while decode generates output tokens autoregressively.
-              These two stages exhibit different compute, memory, and energy
-              characteristics.
-            </p>
-
-            <p>
-              This project benchmarks prefill-decode disaggregation across
-              different model sizes, workload settings, KV cache transfer paths,
-              and GPU frequency configurations. We study when disaggregation
-              improves performance and energy efficiency, and when its overheads
-              outweigh the benefits.
-            </p>
-
-            <p>
-              The project also explores SLO-aware serving-efficiency metrics that
-              combine token throughput, energy consumption, and latency
-              constraints. The goal is to provide practical guidance for
-              deploying disaggregated LLM inference systems.
-            </p>
-
-            <p class="project-note">
-              Workshop paper accepted.
-            </p>
-
-            <p class="project-links">
-              [<a href="#">arXiv</a>]
-              [<a href="#">Project Page</a>]
-              [<a href="#">GitHub</a>]
-            </p>
-          </div>
-
-          <div class="project-figures">
-            <div class="figure-grid">
-              <div class="figure-placeholder">
-                <span>Prefill</span>
-              </div>
-
-              <div class="figure-placeholder">
-                <span>Decode</span>
-              </div>
-
-              <div class="figure-placeholder">
-                <span>KV Transfer</span>
-              </div>
-
-              <div class="figure-placeholder">
-                <span>Energy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Project 3 -->
       <article id="project-video-analytics" class="project-block">
         <h1>
-          Efficient Video Analytics Systems for Edge and IoT Applications
+          Low-Latency 360-Degree Video Analytics with Spatial-Temporal Filtering
         </h1>
 
         <div class="project-layout">
           <div class="project-text">
             <p>
-              Video analytics systems are increasingly deployed on edge devices,
-              embedded platforms, and IoT environments. These systems must
-              satisfy strict latency and resource constraints while processing
-              high-volume visual data streams.
+              360-degree cameras provide omnidirectional coverage which improves situational 
+              awareness in video analytics applications such as traffic monitoring, workspace 
+              surveillance, and first-responder support. However, building efficient 360-degree 
+              video analytics systems is challenging. Compared with traditional 2D videos, 
+              360-degree videos have higher resolution and are stored in equirectangular projection 
+              (ERP) format, which introduces geometric distortion. As a result, directly applying 
+              existing 2D video analytics pipelines leads to higher transmission and detection latency, 
+              as well as reduced query accuracy.
             </p>
 
             <p>
-              This project studies efficient video analytics pipelines for
-              real-world deployment scenarios. We investigate model selection,
-              adaptive scheduling, and resource-aware optimization to improve
-              system performance under dynamic workloads.
+              To address these challenges, we propose ST-360, the first online video analytics framework 
+              customized for 360-degree videos. ST-360 integrates a tile-based dual-projection pipeline 
+              to reduce geometric distortion and improve object detection accuracy. To reduce latency, 
+              ST-360 further introduces spatial and temporal filtering modules that run efficiently on 
+              the edge device. The spatial filtering module removes unimportant regions inside each video 
+              frame through low-level image feature extraction. The temporal filtering module filters out 
+              repeating video frames by comparing low-level image similarity.
             </p>
 
             <p>
-              The broader goal is to design practical AI systems that bridge
-              machine learning accuracy with deployment constraints such as
-              compute capacity, bandwidth, energy consumption, and real-time
-              responsiveness.
+              We evaluate ST-360 on a dataset of 14 one-minute 360-degree first-responder videos. The results 
+              show that ST-360 achieves accurate query results while reducing end-to-end latency by around 50% 
+              compared with state-of-the-art baselines.
             </p>
 
             <p class="project-links">
-              [<a href="#">PDF</a>]
-              [<a href="#">Technical Report</a>]
-              [<a href="#">Dataset</a>]
+              [<a href="../assets/publications/acmtomm/paper.pdf" target="_blank">Full Paper</a>]
+              [<a href="../assets/publications/nossdav/paper.pdf" target="_blank">Short Paper</a>]
+              [<a href="../assets/publications/nossdav/slide.pdf" target="_blank">Slide</a>]
             </p>
           </div>
 
