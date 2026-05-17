@@ -374,13 +374,14 @@ a:hover {
 
 .project-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
-  gap: 42px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(400px, 1fr);
+  gap: 20px;
   align-items: start;
 }
 
 .project-text p {
   margin: 0 0 17px 0;
+  font-size: 19px;
   text-align: justify;
 }
 
@@ -402,6 +403,8 @@ a:hover {
 
 .project-figures {
   width: 100%;
+  max-width: 620px;
+  justify-self: end;
 }
 
 .figure-placeholder {
@@ -423,7 +426,7 @@ a:hover {
 
 .figure-placeholder.wide {
   min-height: 190px;
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 
 .figure-placeholder.small {
@@ -437,7 +440,7 @@ a:hover {
 .figure-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 0px;
 }
 
 .figure-grid {
@@ -446,12 +449,24 @@ a:hover {
   gap: 18px;
 }
 
+.figure-card {
+  width: 100%;
+}
+
+.figure-caption {
+  margin: 4px 0 14px 0;
+  color: #555555;
+  font-size: 15.5px;
+  line-height: 1.45;
+  text-align: center;
+}
+
 /* Use real figures later with this class */
 
 .project-image {
   width: 100%;
   display: block;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
 }
 
 .project-image-caption {
