@@ -431,13 +431,12 @@ a:hover {
   align-items: start;
 }
 
+/* Inner figure cards should not have their own separator lines */
+
 .figure-row .figure-card {
   width: 100%;
   padding: 0;
   border-top: none;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
 }
 
 /* Images */
@@ -466,6 +465,16 @@ a:hover {
   text-align: center;
 }
 
+/* Shared caption for two side-by-side figures */
+
+.figure-row-shared-caption {
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Left-aligned long captions */
+
 .figure-caption.caption-left {
   text-align: left;
 }
@@ -474,15 +483,6 @@ a:hover {
   display: inline;
   width: auto;
   text-align: left;
-}
-
-/* This helps captions align better under two side-by-side figures */
-
-.figure-row .figure-caption {
-  width: 100%;
-  text-align: center;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 /* Placeholder figures */
@@ -645,5 +645,79 @@ a:hover {
   .figure-row,
   .figure-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile fix for Projects page only.
+   This does not affect the desktop view or the mobile homepage. */
+
+@media (max-width: 900px) {
+  body[data-page="projects"] .projects-page {
+    max-width: 100%;
+    padding: 30px 24px 70px 24px;
+    overflow-x: hidden;
+  }
+
+  body[data-page="projects"] .project-layout,
+  body[data-page="projects"] .project-layout.layout-balanced,
+  body[data-page="projects"] .project-layout.layout-text-wide,
+  body[data-page="projects"] .project-layout.layout-figures-wide,
+  body[data-page="projects"] .project-layout.layout-figures-large {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  body[data-page="projects"] .project-text,
+  body[data-page="projects"] .project-figures {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  body[data-page="projects"] .project-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  body[data-page="projects"] .project-figures {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: stretch;
+  }
+
+  body[data-page="projects"] .project-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  body[data-page="projects"] .project-block h1 {
+    font-size: 27px;
+  }
+
+  body[data-page="projects"] .project-text p {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  body[data-page="projects"] .projects-page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  body[data-page="projects"] .project-block {
+    scroll-margin-top: 125px;
+  }
+
+  body[data-page="projects"] .figure-row,
+  body[data-page="projects"] .figure-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="projects"] .figure-caption {
+    font-size: 13px;
   }
 }
